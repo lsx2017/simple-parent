@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="${module.entityPkgName}.${tableInfo.entityName}Mapper">
+#if(${enableCache})
+	<!-- 开启二级缓存 -->
+	<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
+#end
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="${module.entityPkgName}.${tableInfo.entityName}">
+#foreach($field in ${tableInfo.fieldInfos})
+#if($field.keyName == 'PRI')
+		<id column="${field.columnName}" property="${field.fieldName}" />
+#else
+		<result column="${field.columnName}" property="${field.fieldName}" />
+#end
+#end
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="baseColumnList">
+		<![CDATA[
+        ${tableInfo.columnNames}
+		]]>
+    </sql>
+
+	<!--查询全部数据-->
+	<select id="queryList" resultMap="BaseResultMap"  >
+        SELECT <include refid="baseColumnList" />
+			from ${tableInfo.tableName}
+    </select>
+	
+	<!--根据主键查询一条数据-->
+	<select id="get" parameterType="${tableInfo.pkFieldType}" resultMap="BaseResultMap" >
+        SELECT <include refid="baseColumnList" />
+			from ${tableInfo.tableName}
+			where ${tableInfo.pkColumnName}=#{${tableInfo.pkVarName}}
+    </select>
+	<!--统计表记录-->
+    <select id="count" resultType="java.lang.Long">
+        select count(*) from ${tableInfo.tableName}
+    	 <where>
+		  		<if test="offerInstId!=null">
+		  			AND OFFER_INST_ID = #{offerInstId}
+		  		</if>
+		  		<if test="offerId!=null">
+		  			AND OFFER_ID = #{offerId}
+		  		</if>
+		  		<if test="offerType!=null">
+		  			AND OFFER_TYPE = #{offerType}
+		  		</if>
+		  		<if test="ownerCustId!=null">
+		  			AND OWNER_CUST_ID = #{ownerCustId}
+		  		</if>
+		  		<if test="effDate!=null">
+		  			AND EFF_DATE = #{effDate}
+		  		</if>
+		  		<if test="expDate!=null">
+		  			AND EXP_DATE = #{expDate}
+		  		</if>
+		  		<if test="offerAgreeId!=null">
+		  			AND OFFER_AGREE_ID = #{offerAgreeId}
+		  		</if>
+		  		<if test="createOrgId!=null">
+		  			AND CREATE_ORG_ID = #{createOrgId}
+		  		</if>
+		  		<if test="expProcMethod!=null">
+		  			AND EXP_PROC_METHOD = #{expProcMethod}
+		  		</if>
+		  		<if test="lanId!=null">
+		  			AND LAN_ID = #{lanId}
+		  		</if>
+		  		<if test="regionId!=null">
+		  			AND REGION_ID = #{regionId}
+		  		</if>
+		  		<if test="statusCd!=null">
+		  			AND STATUS_CD = #{statusCd}
+		  		</if>
+		  		<if test="createStaff!=null">
+		  			AND CREATE_STAFF = #{createStaff}
+		  		</if>
+		  		<if test="updateStaff!=null">
+		  			AND UPDATE_STAFF = #{updateStaff}
+		  		</if>
+		  		<if test="createDate!=null">
+		  			AND CREATE_DATE = #{createDate}
+		  		</if>
+		  		<if test="statusDate!=null">
+		  			AND STATUS_DATE = #{statusDate}
+		  		</if>
+		  		<if test="updateDate!=null">
+		  			AND UPDATE_DATE = #{updateDate}
+		  		</if>
+		  		<if test="busiModDate!=null">
+		  			AND BUSI_MOD_DATE = #{busiModDate}
+		  		</if>
+		  		<if test="lastOrderItemId!=null">
+		  			AND LAST_ORDER_ITEM_ID = #{lastOrderItemId}
+		  		</if>
+		  		<if test="remark!=null">
+		  			AND REMARK = #{remark}
+		  		</if>
+		  		<if test="extOfferInstId!=null">
+		  			AND EXT_OFFER_INST_ID = #{extOfferInstId}
+		  		</if>
+		  		<if test="isIndependent!=null">
+		  			AND IS_INDEPENDENT = #{isIndependent}
+		  		</if>
+		  		<if test="outerOfferInstId!=null">
+		  			AND OUTER_OFFER_INST_ID = #{outerOfferInstId}
+		  		</if>
+		 </where> 
+    </select>
+	<!-- 添加数据,请核实表主键  -->
+	<insert id="create" parameterType="${module.entityPkgName}.${tableInfo.entityName}" >
+	    INSERT INTO ${tableInfo.tableName}
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+	#foreach($field in ${tableInfo.fieldInfos})
+		<if test="${field.fieldName}!=null">
+				${field.columnName},
+			</if>
+	#end			
+	</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+	#foreach($field in ${tableInfo.fieldInfos})
+		<if test="${field.fieldName}!=null">
+				 #{${field.fieldName}},
+			</if>
+	#end				
+	</trim>   
+	</insert>
+	<!--修改数据-->
+	<update id="update" parameterType="${module.entityPkgName}.${tableInfo.entityName}">
+        UPDATE ${tableInfo.tableName} 
+        <set>
+#foreach($field in ${tableInfo.fieldInfos})
+	#if($field.keyName != 'PRI')
+<if test="${field.fieldName}!=null">
+			${field.columnName} = #{${field.fieldName}} ,
+		</if>  		
+	#end
+#end
+	    </set>
+        <where> 
+			${tableInfo.pkColumnName}=#{${tableInfo.pkVarName}}  
+	    </where>        
+	</update>
+	<!--根据参数删除数据-->
+  	<delete id="delete" parameterType="${module.entityPkgName}.${tableInfo.entityName}" >
+    	DELETE FROM ${tableInfo.tableName}
+    	<where> 
+	     	<if test="${tableInfo.pkVarName}!=null">
+	       		AND ${tableInfo.pkColumnName} = #{${tableInfo.pkVarName}}
+	       	</if>
+     	</where> 
+  	</delete>
+	<!--根据主键删除数据-->
+	<delete id="deleteById" parameterType="${tableInfo.pkFieldType}">
+        DELETE FROM ${tableInfo.tableName}
+        where ${tableInfo.pkColumnName}=#{${tableInfo.pkVarName}}
+    </delete>  
+</mapper>

@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.simple.pm.mapper.BugsMapper">
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.simple.pm.entity.Bugs">
+		<id column="BUG_ID" property="bugId" />
+		<result column="BUG_NO" property="bugNo" />
+		<result column="MODULAR_ID" property="modularId" />
+		<result column="BUG_TITLE" property="bugTitle" />
+		<result column="BUG_TYPE" property="bugType" />
+		<result column="OS" property="os" />
+		<result column="BROSWER" property="broswer" />
+		<result column="PHASE" property="phase" />
+		<result column="VERSION_ID" property="versionId" />
+		<result column="SOURCE_" property="source" />
+		<result column="CREAT_TIME" property="creatTime" />
+		<result column="ESTIMATED_START_TIME" property="estimatedStartTime" />
+		<result column="ESTIMATED_END_TIME" property="estimatedEndTime" />
+		<result column="ESTIMATED_HOURS" property="estimatedHours" />
+		<result column="EXPECT_TIME" property="expectTime" />
+		<result column="PRIORITY" property="priority" />
+		<result column="SEVERITY" property="severity" />
+		<result column="USER_ID" property="userId" />
+		<result column="CUR_USER_ID" property="curUserId" />
+		<result column="CUR_USER_NAME" property="curUserName" />
+		<result column="REPRO_STEPS" property="reproSteps" />
+		<result column="STATUS" property="status" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="baseColumnList">
+		<![CDATA[
+        BUG_ID,BUG_NO,MODULAR_ID,BUG_TITLE,BUG_TYPE,OS,BROSWER,PHASE,VERSION_ID,SOURCE_,CREAT_TIME,ESTIMATED_START_TIME,ESTIMATED_END_TIME,ESTIMATED_HOURS,EXPECT_TIME,PRIORITY,SEVERITY,USER_ID,CUR_USER_ID,CUR_USER_NAME,REPRO_STEPS,STATUS
+		]]>
+    </sql>
+
+	<!--查询全部数据-->
+	<select id="queryList" resultMap="BaseResultMap"  >
+        SELECT <include refid="baseColumnList" />
+			from pm_bugs
+    </select>
+	
+	<!--根据主键查询一条数据-->
+	<select id="get" parameterType="Long" resultMap="BaseResultMap" >
+        SELECT <include refid="baseColumnList" />
+			from pm_bugs
+			where BUG_ID=#{bugId}
+    </select>
+	<!-- 添加数据,请核实表主键  -->
+	<insert id="create" parameterType="com.simple.pm.entity.Bugs" >
+	    INSERT INTO pm_bugs
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="bugId!=null">
+				BUG_ID,
+			</if>
+			<if test="bugNo!=null">
+				BUG_NO,
+			</if>
+			<if test="modularId!=null">
+				MODULAR_ID,
+			</if>
+			<if test="bugTitle!=null">
+				BUG_TITLE,
+			</if>
+			<if test="bugType!=null">
+				BUG_TYPE,
+			</if>
+			<if test="os!=null">
+				OS,
+			</if>
+			<if test="broswer!=null">
+				BROSWER,
+			</if>
+			<if test="phase!=null">
+				PHASE,
+			</if>
+			<if test="versionId!=null">
+				VERSION_ID,
+			</if>
+			<if test="source!=null">
+				SOURCE_,
+			</if>
+			<if test="creatTime!=null">
+				CREAT_TIME,
+			</if>
+			<if test="estimatedStartTime!=null">
+				ESTIMATED_START_TIME,
+			</if>
+			<if test="estimatedEndTime!=null">
+				ESTIMATED_END_TIME,
+			</if>
+			<if test="estimatedHours!=null">
+				ESTIMATED_HOURS,
+			</if>
+			<if test="expectTime!=null">
+				EXPECT_TIME,
+			</if>
+			<if test="priority!=null">
+				PRIORITY,
+			</if>
+			<if test="severity!=null">
+				SEVERITY,
+			</if>
+			<if test="userId!=null">
+				USER_ID,
+			</if>
+			<if test="curUserId!=null">
+				CUR_USER_ID,
+			</if>
+			<if test="curUserName!=null">
+				CUR_USER_NAME,
+			</if>
+			<if test="reproSteps!=null">
+				REPRO_STEPS,
+			</if>
+			<if test="status!=null">
+				STATUS,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="bugId!=null">
+				 #{bugId},
+			</if>
+			<if test="bugNo!=null">
+				 #{bugNo},
+			</if>
+			<if test="modularId!=null">
+				 #{modularId},
+			</if>
+			<if test="bugTitle!=null">
+				 #{bugTitle},
+			</if>
+			<if test="bugType!=null">
+				 #{bugType},
+			</if>
+			<if test="os!=null">
+				 #{os},
+			</if>
+			<if test="broswer!=null">
+				 #{broswer},
+			</if>
+			<if test="phase!=null">
+				 #{phase},
+			</if>
+			<if test="versionId!=null">
+				 #{versionId},
+			</if>
+			<if test="source!=null">
+				 #{source},
+			</if>
+			<if test="creatTime!=null">
+				 #{creatTime},
+			</if>
+			<if test="estimatedStartTime!=null">
+				 #{estimatedStartTime},
+			</if>
+			<if test="estimatedEndTime!=null">
+				 #{estimatedEndTime},
+			</if>
+			<if test="estimatedHours!=null">
+				 #{estimatedHours},
+			</if>
+			<if test="expectTime!=null">
+				 #{expectTime},
+			</if>
+			<if test="priority!=null">
+				 #{priority},
+			</if>
+			<if test="severity!=null">
+				 #{severity},
+			</if>
+			<if test="userId!=null">
+				 #{userId},
+			</if>
+			<if test="curUserId!=null">
+				 #{curUserId},
+			</if>
+			<if test="curUserName!=null">
+				 #{curUserName},
+			</if>
+			<if test="reproSteps!=null">
+				 #{reproSteps},
+			</if>
+			<if test="status!=null">
+				 #{status},
+			</if>
+		</trim>   
+	</insert>
+	<!--修改数据-->
+	<update id="update" parameterType="com.simple.pm.entity.Bugs">
+        UPDATE pm_bugs 
+        <set>
+		<if test="bugNo!=null">
+			BUG_NO = #{bugNo} ,
+		</if>  		
+		<if test="modularId!=null">
+			MODULAR_ID = #{modularId} ,
+		</if>  		
+		<if test="bugTitle!=null">
+			BUG_TITLE = #{bugTitle} ,
+		</if>  		
+		<if test="bugType!=null">
+			BUG_TYPE = #{bugType} ,
+		</if>  		
+		<if test="os!=null">
+			OS = #{os} ,
+		</if>  		
+		<if test="broswer!=null">
+			BROSWER = #{broswer} ,
+		</if>  		
+		<if test="phase!=null">
+			PHASE = #{phase} ,
+		</if>  		
+		<if test="versionId!=null">
+			VERSION_ID = #{versionId} ,
+		</if>  		
+		<if test="source!=null">
+			SOURCE_ = #{source} ,
+		</if>  		
+		<if test="creatTime!=null">
+			CREAT_TIME = #{creatTime} ,
+		</if>  		
+		<if test="estimatedStartTime!=null">
+			ESTIMATED_START_TIME = #{estimatedStartTime} ,
+		</if>  		
+		<if test="estimatedEndTime!=null">
+			ESTIMATED_END_TIME = #{estimatedEndTime} ,
+		</if>  		
+		<if test="estimatedHours!=null">
+			ESTIMATED_HOURS = #{estimatedHours} ,
+		</if>  		
+		<if test="expectTime!=null">
+			EXPECT_TIME = #{expectTime} ,
+		</if>  		
+		<if test="priority!=null">
+			PRIORITY = #{priority} ,
+		</if>  		
+		<if test="severity!=null">
+			SEVERITY = #{severity} ,
+		</if>  		
+		<if test="userId!=null">
+			USER_ID = #{userId} ,
+		</if>  		
+		<if test="curUserId!=null">
+			CUR_USER_ID = #{curUserId} ,
+		</if>  		
+		<if test="curUserName!=null">
+			CUR_USER_NAME = #{curUserName} ,
+		</if>  		
+		<if test="reproSteps!=null">
+			REPRO_STEPS = #{reproSteps} ,
+		</if>  		
+		<if test="status!=null">
+			STATUS = #{status} ,
+		</if>  		
+		    </set>
+        <where> 
+			BUG_ID=#{bugId}
+	    </where>        
+	</update>
+	<!--根据参数删除数据
+  	<delete id="delete" parameterType="com.simple.pm.entity.Bugs" >
+    	DELETE FROM pm_bugs
+    	<where> 
+	 
+     	</where> 
+  	</delete>
+	-->
+	<!--根据主键删除数据-->
+	<delete id="deleteById" parameterType="Long">
+        DELETE FROM pm_bugs
+        where BUG_ID=#{bugId}
+    </delete>  
+</mapper>

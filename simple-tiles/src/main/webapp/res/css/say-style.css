@@ -1,0 +1,65 @@
+@charset "utf-8";
+/* CSS Document */
+
+.say-left{
+	width:50px;
+	height:50px;
+}
+.say-right{
+	width:80%;
+	border:1px solid #ddedf0;
+	margin-left:10px;
+	border-radius: 4px;
+	padding: 8px 15px;
+	box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+.ss-user-name{
+	color:#1b7f8f;
+}
+.ss-user-con{
+	line-height:25px;
+}
+.ss-upic ul li a{
+	width:127px;
+	height:128px;
+	float:left;
+	margin-right:8px;
+	margin-top:8px;
+	display:inline-block;
+}
+.ss-time{
+	color:#7e8a8c;
+	font-size:12px;
+}
+.ss-zan{
+	color:#157c8c;
+}
+.say-right hr{
+	width:100%;
+	margin:0 auto;
+	padding-top:10px;
+	margin-bottom:10px;
+	text-align:center;
+	border:none;
+	border-bottom:1px solid #ddedf0;
+}
+.ss-hf{
+	border-bottom:1px dashed #ddedf0;
+}
+.ss-user-hf{
+	width:35px;
+	height:35px;
+}
+.ss-user-hf img{
+	margin-top:3px;
+}
+.ss-hf-cc p{
+	color:#7e8a8c;
+	margin-top:5px;
+	font-size:12px;
+}
+.ss-texta{
+	width:100%;
+	height:72px;
+	border-color: #ddedf0;
+}

@@ -1,0 +1,247 @@
+
+.cal-titl {
+    text-align: center;
+    font-weight: bold;
+    padding: 10px 0;
+    margin: 0 -6px 0 -4px;
+}
+
+.workbench .layout .to-left, .workbench .layout .to-right {
+
+    display: inline-block;
+    background-image: url(../css/img/jingoalTaskIcon1x.png);
+    vertical-align: top;
+    cursor: pointer;
+}
+.ui-monthview td{
+    height: 20px !important;
+    width: 20px !important;
+}
+
+
+.west-panel{
+	width:23%; 
+	float: left; 
+	border:0px !important; 
+
+}
+
+.center-panel{
+	width:54%; 
+	float: left;
+	border:0px !important; 
+
+	
+}
+
+.east-panel{
+	width:23%;
+	float: right;
+	border:0px !important; 
+
+}
+
+#wp1{
+	margin-top: 10px; 
+	margin-right: 5px; 
+	margin-bottom:5; 
+	margin-left: 10px;
+}
+#wp2{
+	margin-top: 5px; 
+	margin-right: 5px; 
+	margin-bottom:5; 
+	margin-left: 10px;
+}
+#wp3{
+	margin-top: 5px; 
+	margin-right: 5px; 
+	margin-bottom:10; 
+	margin-left: 10px;
+}
+#cp1{
+	margin-top: 10px;
+	margin-left: 5px;
+	margin-right:5px; 
+	margin-bottom: 5px;
+}
+
+#cp2{
+	margin-top: 5px;
+	margin-right:5px; 
+	margin-left: 5px;
+	margin-bottom: 5px;
+}
+
+#cp3{
+	margin-top: 5px; 
+	margin-left: 5px;
+	margin-right: 5px; 
+	margin-bottom:10; 
+}
+
+#ep1{
+	margin-top: 10px; 
+	margin-right: 10px; 
+	margin-bottom:5; 
+	margin-left: 5px;
+}
+#ep2{
+	margin-top: 5px; 
+	margin-right: 10px; 
+	margin-bottom:5; 
+	margin-left: 5px;
+}
+#ep3{
+	margin-top: 5px; 
+	margin-right: 10px; 
+	margin-bottom:10; 
+	margin-left: 5px;
+}
+/**
+.ui-monthview {
+	padding: 10px 0;
+    text-align: center;
+}
+
+ .cal-titl {
+    text-align: center;
+    font-weight: bold;
+    padding: 10px 0;
+    margin: 0 -6px 0 -4px;
+ }
+ 
+ .year-month {
+    width: 68%;
+    display: inline-block;
+    padding-top: 3px;
+}
+.ui-monthview td {
+    position: relative;
+    height: 33px;
+    width: 30px;
+    padding: 0;
+    text-align: center;
+	cursor:pointer;
+}
+
+.ui-monthview td.ui-monthview-date a {
+    width: 20px;
+    height: 27px;
+    line-height: 27px;
+    display: inline-block;
+    vertical-align: middle;
+    border: 1px solid white;
+    border-radius: 11px;
+}
+ .ui-monthview td.ui-monthview-date i {
+    width: 4px;
+    height: 4px;
+    background: url(./img/icon-cal-dot.png);
+    position: absolute;
+    top: 30px;
+    left: 12px;
+}
+
+
+.ui-monthview td.ui-monthview-today a {
+    background-color: #3898ef;
+    color: white;
+}
+
+ .ui-monthview-date-selected {
+    color: #fff;
+	border:1px solid #29e;
+
+    border-radius: 20px;
+}
+
+.ui-monthview .ui-monthview-extra {
+    color: #a4acb6;
+    cursor: auto;
+}
+*/
+
+
+/*日程的css*/
+.schedule{
+	width:100%;
+}
+
+
+.schedule-h{
+	height:40px;
+	line-height:40px;
+	width:90%;
+	margin:0 auto;
+	text-align:center;
+}
+.schedule-h i{
+	height:40px;
+	line-height:40px;
+}
+.sch-time-sl{
+	 width:90%; margin:0 auto; text-align:center;
+}
+.sch-date{
+}
+.sch-date td{
+	width:14%;
+	margin:0 auto;
+	text-align:center;
+	height:33px;
+	line-height:33px;
+	border-right:1px solid #d5d5d5;
+	border-bottom:1px solid #d5d5d5;
+}
+.sch-date tbody td {
+	cursor: pointer;
+}
+
+.sch-date-sel {
+	margin:0 auto;
+	text-align:center;
+	border-radius:26px;
+	background-color:#4c8fbd;
+	width:26px;
+	height:26px;
+	line-height:27px;
+	color:#ffffff;
+}
+
+.sch-date-cur {
+	margin:0 auto;
+	text-align:center;
+	border-radius:26px;
+	border:2px solid #4c8fbd;
+	width:26px;
+	height:26px;
+	line-height:27px;
+
+}
+
+.sch-oper {
+	margin:0 auto; text-align:center;
+	height:30px;
+	line-height:30px;
+	border-top:1px solid #d5d5d5;
+	cursor: pointer;
+}
+.sch-oper a {
+	color:#b5b5b5;
+}
+.fa {
+	cursor: pointer;
+}
+
+.exist-log {
+	height: 8px; 
+	line-height: 8px;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+ul {
+	overflow: hidden !important;
+}

@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>无标题文档</title>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/icheck.css">
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="icheck.min.js"></script>
+ <script type="text/javascript">
+$(document).ready(function(){
+	$(".i-checks").iCheck({
+		checkboxClass:"icheckbox_square-green",
+		radioClass:"iradio_square-green"
+	})
+});
+</script>   
+</head>
+
+<body>
+ <div class="form-group">
+              <label class="col-xs-2 control-label">复选框&amp;单选框 <br/>
+                <small class="text-navy">自定义样式</small> </label>
+              <div class="col-xs-10">
+                <div class="checkbox i-checks">
+                  <label>
+                    <input type="checkbox" value="">
+                   选项1</label>
+                </div>
+                <div class="checkbox i-checks">
+                  <label>
+                    <input type="checkbox" value="" checked="">
+                    <i></i> 选项2（选中）</label>
+                </div>
+                <div class="checkbox i-checks">
+                  <label>
+                    <input type="checkbox" value="" disabled="" checked="">
+                    <i></i> 选项3（选中并禁用）</label>
+                </div>
+                <div class="checkbox i-checks">
+                  <label>
+                    <input type="checkbox" value="" disabled="">
+                    <i></i> 选项4（禁用）</label>
+                </div>
+                <div class="radio i-checks">
+                  <label>
+                    <input type="radio" value="option1" name="a">
+                    <i></i> 选项1</label>
+                </div>
+                <div class="radio i-checks">
+                  <label>
+                    <input type="radio" checked="" value="option2" name="a">
+                    <i></i> 选项2（选中）</label>
+                </div>
+                <div class="radio i-checks">
+                  <label>
+                    <input type="radio" disabled="" checked="" value="option2">
+                    <i></i> 选项3（选中并禁用）</label>
+                </div>
+                <div class="radio i-checks">
+                  <label>
+                    <input type="radio" disabled="" name="a">
+                    <i></i> 选项4（禁用）</label>
+                </div>
+              </div>
+            </div>
+</body>
+</html>

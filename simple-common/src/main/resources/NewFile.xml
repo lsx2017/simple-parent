@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContractRoot>
+	<TcpCont>
+		<AppKey>1000000201</AppKey>
+		<Method>bestpay.queryBalance</Method>
+		<TransactionID>001510000000000201710276283120454</TransactionID>
+		<ReqTime>20171027120331</ReqTime>
+		<Sign>123￥62</Sign>
+		<Version>V1.0</Version>
+	</TcpCont>
+	<SvcCont>
+		<PayPlatRequestParameter>
+			<CTRL-INFO WEBSVRNAME="余额查询" WEBSVRCODE="100108"
+				APPFROM="30001-CRM-001-192.168.1.1" KEEP="2013052900383659311611" />
+			<PARAMETERS>
+				<PRODUCTNO>142368059</PRODUCTNO>
+				<ACCOUNTTYPE>1</ACCOUNTTYPE>
+				<ACCEPTORGCODE>002310000000000</ACCEPTORGCODE>
+				<ACCEPTSEQNO>20171027120331081600</ACCEPTSEQNO>
+				<INPUTTIME>20171027120331</INPUTTIME>
+			</PARAMETERS>
+		</PayPlatRequestParameter>
+	</SvcCont>
+</ContractRoot>
+

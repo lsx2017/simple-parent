@@ -1,0 +1,14 @@
+package ${module.daoPkgName};
+
+import ${module.entityPkgName}.${tableInfo.entityName};
+import com.simple.common.mybatis.BaseMapper;
+import org.springframework.stereotype.Repository;
+/**
+ * <p> ${tableInfo.comment}${module.daoSuffix} </p>
+ * @author ${tableInfo.author}
+ * @date ${tableInfo.createDate}
+ */
+@Repository
+public interface ${tableInfo.entityName}${module.daoSuffix} extends BaseMapper<${tableInfo.entityName}, ${tableInfo.pkFieldInfo.fieldType}> {
+
+}

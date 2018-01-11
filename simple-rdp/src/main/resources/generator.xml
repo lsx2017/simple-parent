@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generator>
+	<!-- mysql -->
+	<jdbcConnection 
+		driverName="com.mysql.jdbc.Driver" 
+		url="jdbc:mysql://192.168.140.100:3306/platform?useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=convertToNull&amp;useSSL=false" 
+		username="root" 
+		password="root123"> 
+	</jdbcConnection>
+	
+	 <!-- oracle 	
+	<jdbcConnection 
+		driverName="oracle.jdbc.driver.OracleDriver" 
+		url="jdbc:oracle:thin:@133.37.135.33:1521:test3" 
+		username="CRM_APP" 
+		password="CRM_APP"> 
+	</jdbcConnection>
+-->
+	<const targetPath="D:\Workspaces\base\simple-parent\simple-rdp\src\main\java"></const>
+	<module name="pm">
+		<entity targetPackage="com.simple.pm.entity">
+		</entity>
+		<mapping targetPackage="com.simple.pm.mapper.xml">
+		</mapping>
+		<dao targetPackage="com.simple.pm.mapper">
+		</dao>
+		<service targetPackage="com.simple.pm.service">
+		</service>
+		<controller targetPackage="com.simple.pm.controller">
+		</controller>	
+		<!-- 要生成那些表(更改tableName和domainObjectName就可以) -->
+		<table tableName="pm_bugs" entityName="Bugs" author="liushx"/>
+		<table tableName="s_user" entityName="User" author="liushx"/>			
+		<!-- <table tableName="post_man" entityName="PostMan" author="liushx"/>	 -->
+	</module>
+</generator>

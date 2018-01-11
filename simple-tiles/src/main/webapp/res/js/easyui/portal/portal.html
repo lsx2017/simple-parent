@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Portal - jQuery EasyUI</title>
+	<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="portal.css">
+	<style type="text/css">
+
+		.t-list{
+			
+		}
+		.panel-header, .panel-body {
+			
+		}
+	</style>
+	<script type="text/javascript" src="../jquery.min.js"></script>
+	<script type="text/javascript" src="../../slimscroll/jquery.slimscroll.min.js"></script>
+	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+    
+	<script type="text/javascript" src="jquery.portal.js"></script>
+<script>
+$(function(){
+	$('#pp').portal({
+		border:false
+	});
+	$('#pp1').portal({
+		border:false
+	});
+ 	$("body").slimScroll({
+            height: $(window).height() +'px'
+	 });
+	//add();
+});
+		function add(){
+			for(var i=0; i<3; i++){
+				var p = $('<div/>').appendTo('body');
+				p.panel({
+					title:'Title'+i,
+					content:'<div style="padding:5px;">Content'+(i+1)+'</div>',
+					height:100,
+					closable:true,
+					collapsible:true
+				});
+				$('#pp').portal('add', {
+					panel:p,
+					columnIndex:i
+				});
+			}
+			$('#pp').portal('resize');
+		}
+		function remove(){
+			$('#pp').portal('remove',$('#pgrid'));
+			$('#pp').portal('resize');
+		}
+	</script>
+</head>
+<body style="margin:0 auto; padding:0;">
+
+<div id="pp" style="position:relative; overflow:auto;">
+    <div style="width:30%;border:0 !important;">
+        <div style="text-align:center;height:300px;padding:5px; background-color:#D0C2C3;">
+                object
+        </div>
+    </div>
+    <div style="width:40%;">
+        <div id="pgrid" style="height:300px;">
+            <table class="easyui-datagrid" style="width:650px;height:auto"
+                    fit="true" border="false"
+                    singleSelect="true"
+                    idField="itemid">
+                <thead>
+                    <tr>
+                        <th field="itemid" width="60">Item ID</th>
+                        <th field="productid" width="60">Product ID</th>
+                        <th field="listprice" width="80" align="right">List Price</th>
+                        <th field="unitcost" width="80" align="right">Unit Cost</th>
+                        <th field="attr1" width="120">Attribute</th>
+                        <th field="status" width="50" align="center">Status</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div style="width:30%;">
+        <div title="Searching" iconCls="icon-search" closable="true" style="height:300px;padding:10px;">
+            <input class="easyui-searchbox">
+        </div>
+        <div title="Graph" closable="true" style="height:800px;text-align:center;">
+            <img height="160" src="http://knol.google.com/k/-/-/3mudqpof935ww/ip4n5y/web-graph.png"></img>
+        </div>
+    </div>
+</div>
+<div id="pp1" style="position:relative; overflow:auto;">
+    <div style="width:30%;border:0 !important;">
+        <div style="text-align:center;height:300px;padding:5px; background-color:#D0C2C3;">
+                object
+        </div>
+    </div>
+    <div style="width:40%;">
+        <div id="pgrid" style="height:300px;">
+            <table class="easyui-datagrid" style="width:650px;height:auto"
+                    fit="true" border="false"
+                    singleSelect="true"
+                    idField="itemid">
+                <thead>
+                    <tr>
+                        <th field="itemid" width="60">Item ID</th>
+                        <th field="productid" width="60">Product ID</th>
+                        <th field="listprice" width="80" align="right">List Price</th>
+                        <th field="unitcost" width="80" align="right">Unit Cost</th>
+                        <th field="attr1" width="120">Attribute</th>
+                        <th field="status" width="50" align="center">Status</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div style="width:30%;">
+        <div title="Searching" iconCls="icon-search" closable="true" style="height:300px;padding:10px;">
+            <input class="easyui-searchbox">
+        </div>
+        <div title="Graph" closable="true" style="height:800px;text-align:center;">
+            <img height="160" src="http://knol.google.com/k/-/-/3mudqpof935ww/ip4n5y/web-graph.png"></img>
+        </div>
+    </div>
+</div>
+</body>
+</html>

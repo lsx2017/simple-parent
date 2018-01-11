@@ -1,0 +1,34 @@
+@charset "utf-8";
+/* CSS Document */
+
+.editor-top {
+	width:100%;height: 100px;background: red;
+}
+.editor-left {
+	width:220px;
+	float:left;
+	border:1px solid #e4e4e4;
+}
+.editor-right{
+	float:right;
+	border:1px solid #e4e4e4;
+}
+.calculator{
+
+	border-bottom:1px solid #f1f1f1;
+}
+.calculator td{
+	width:25%;
+	height:50px;
+	line-height:50px;
+	border-right:1px solid #f1f1f1;
+	border-top:1px solid #f1f1f1;
+	font-size:24px;
+	color:#303239;
+}
+.bac-blue{
+	background-color:#f7fbfe;
+}
+.zi-bcor{
+	color:#13bcd1 !important;
+}

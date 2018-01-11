@@ -1,0 +1,202 @@
+@charset "utf-8";
+/* CSS Document */
+
+.main-chat{
+	width:602px; 
+	height:524px;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+.chat-header{
+	width:100%;
+	height:80px;
+	background-color:#ececec;
+	padding-top:14px;
+	padding-left:15px;
+}
+.chat-tx{
+	width: 52px;
+    height: 52px;
+    -webkit-border-radius: 200px;
+    overflow: hidden;
+	float:left;
+}
+.chat-tx span{
+	width: 100%;
+    height: 100%;
+    display: block;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -webkit-border-radius: 200px;
+}
+.chat-name{
+	float:left;
+	margin-top:10px;
+	margin-left:12px;
+	font-size:20px;
+}
+.dialog-box{
+	height:280px;
+	width:100%;
+	padding-left:18px;
+	padding-right:18px;
+	border-bottom:1px solid #e2e2e2;
+}
+.dialog-tx{
+	width: 40px;
+    height: 40px;
+    -webkit-border-radius: 200px;
+    overflow: hidden;
+	
+}
+.dialog-tx span{
+	width: 100%;
+    height: 100%;
+    display: block;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -webkit-border-radius: 200px;
+}
+.dialog-other{
+	width:200px;
+	height:38px;
+	line-height:38px;
+	background-color:#e2e2e2;
+	padding-left:15px;
+	padding-right:15px;
+	color:#2f2f2f;
+	border-radius:4px;
+}
+.dia-other-bg{
+	background:url(../images/dia-pic-b1.png) no-repeat left center;
+	height:38px;
+	width:10px;
+	
+}
+.dialog-our{
+	width:200px;
+	height:38px;
+	line-height:38px;
+	background-color:#61b778;
+	padding-left:15px;
+	padding-right:15px;
+	color:#ffffff;
+	border-radius:4px;
+}
+.dia-our-bg{
+	background:url(../images/dia-pic-a2.png) no-repeat right center;
+	height:38px;
+	width:10px;
+}
+.dia-time{
+	color:#9f9f9f;
+	margin-bottom:6px;
+}
+.dia-nav{
+	height:40px;
+	line-height:40px;
+	padding-left:15px;
+	padding-right:15px;
+}
+.dia-send{
+	padding-left:10px;
+	padding-right:10px;
+}
+.dia-send-c{
+	height:70px;
+	line-height:25px;
+}
+.send-text{
+	width:100%;
+	height:60px;
+	line-height:25px;
+	border:none;
+}
+.dia-coc{
+	width:25px;
+	height:25px;
+	background-color:#C00;
+}
+
+/*好友页面*/
+.chat-friend{
+	width:262px;
+	height:522px;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+	position: absolute;
+    bottom: 0;
+    right: 0;
+    display: none;
+    background: #FFF;
+}
+
+.close-flist {
+	cursor: pointer;
+}
+
+
+.ch-frd-h{
+	width:100%;
+	height:116px;
+	background-color:#ececec;
+}
+.ch-usname{
+	color:#404040;
+	font-size:16px;
+}
+.frd-tab ul li a{
+	width:33%;
+	height:44px;
+	line-height:44px;
+	display:inline-block;
+	float:left;
+	margin:0 auto;
+	text-align:center;
+	font-size:20px;
+	color:#565656;
+	margin-top:10px;
+}
+.ch-teb-on{
+	border-bottom:3px solid #4cda92;
+}
+
+.friend-list{
+	width:100%;
+	height:370px;
+	padding:10px;
+}
+.frd-h{
+	height:20px;
+	line-height:20px;
+	width:100%;
+}
+.frd-h a{
+	
+}
+.frd-h-z1{
+	color:#d2d0d1;
+	font-size:22px;
+}
+.frd-h-z2{
+	color:#3e3e3e !important;
+	font-size:14px !important;
+	margin-left:5px;
+}
+.frd-h-z3{
+	color:#a0a0a0;
+	font-size:14px !important;
+}
+.frd-cc{
+}
+.frd-info{
+	color:#303030;
+}
+.frd-sign{
+	color:#a2a2a2;
+}
+.cfd-nav{
+	height:36px;
+	line-height:36px;
+	background-color:#f6f6f6;
+}

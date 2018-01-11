@@ -1,0 +1,145 @@
+@charset "utf-8";
+/* CSS Document */
+
+.per-sel{
+	padding:10px 15px;
+}
+.per-sel-left{
+	width:64%;
+	border:1px solid #cccdcc;
+	float:left;
+	height:410px;
+}
+.per-sel-right{
+	width:35%;
+	border:1px solid #cccdcc;
+	float:right;
+	height:410px;
+}
+.per-sel-nav{
+	width:46%;
+	float:left;
+	padding:12px;
+	border-right:1px solid #cccdcc;
+	height:408px;
+}
+.per-sel-nav-c{
+	margin-top:15px;
+}
+.per-name{
+	width:54%;
+	float:left;
+}
+.per-name-h{
+	width:100%;
+	height:44px;
+	line-height:44px;
+	color:#342a2a;
+	background-color:#fbfbfb;
+	padding-left:15px;
+}
+.per-name-h span{
+	font-size:15px;
+}
+.per-name-h span b{
+	color:#2499fd;
+}
+.per-name-c ul li{
+	width:126px;
+	height:36px;
+	line-height:36px;
+	float:left;
+	margin-left:10px;
+	border:1px solid #dddddd;
+	margin-top:10px;
+	cursor:pointer;
+}
+.li-hover {
+	border:1px solid #2499fd !important;
+	color:#2499fd !important;
+}
+
+.per-check{
+	 margin-top:7px !important; 
+	 margin-right:5px !important;
+	 position: relative;
+	 float: right;
+}
+
+.per-close{
+	 margin-top:9px; 
+	 margin-right:7px;
+	 color:#a0a0a0;
+}
+.per-close:hover{
+	color:#2499fd;
+	cursor:pointer;
+}
+.per-check-zi{
+	font-weight:normal !important;
+	margin-left: 10px;
+	float: left;
+}
+
+.i-checks{display: block;}
+.red-color{color:red;}
+
+/* 修改bootstrap
+----------------------------------- */
+.icheckbox_square-green,
+.iradio_square-green {
+    display: inline-block;
+    *display: inline;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    width: 22px;
+    height: 22px;
+    background: url(../images/green.png) no-repeat;
+    border: none;
+    cursor: pointer;
+}
+
+.icheckbox_square-green {
+    background-position: 0 0;
+}
+.icheckbox_square-green.hover {
+    background-position: -24px 0;
+}
+.icheckbox_square-green.checked {
+    background-position: -48px 0;
+}
+.icheckbox_square-green.disabled {
+    background-position: -72px 0;
+    cursor: default;
+}
+.icheckbox_square-green.checked.disabled {
+    background-position: -96px 0;
+}
+
+.iradio_square-green {
+    background-position: -120px 0;
+}
+.iradio_square-green.hover {
+    background-position: -144px 0;
+}
+.iradio_square-green.checked {
+    background-position: -168px 0;
+}
+.iradio_square-green.disabled {
+    background-position: -192px 0;
+    cursor: default;
+}
+.iradio_square-green.checked.disabled {
+    background-position: -216px 0;
+}
+
+/* HiDPI support */
+@media (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+    .icheckbox_square-green,
+    .iradio_square-green {
+        background-image: url(../images/green%402x.png);
+        -webkit-background-size: 240px 24px;
+        background-size: 240px 24px;
+    }
+}

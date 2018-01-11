@@ -1,0 +1,175 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ include file="../../common/taglib.jsp"%>
+
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+
+%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<base href="<%=basePath%>">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>通用表单编辑(一行四列)</title>
+   	<link rel="stylesheet" type="text/css" href="res/js/bootstrap/css/bootstrap.css">
+   	<link rel="stylesheet" type="text/css" href="res/css/font-awesome.min.css"/>
+	<link rel="stylesheet" type="text/css" href="res/js/datetimepicker/css/datetimepicker.css">  
+   	<link rel="stylesheet" type="text/css" href="res/js/webuploader/webuploader.css"/>	 
+   	<link rel="stylesheet" type="text/css" href="res/css/oa-golbal.css">	   	
+   	<link rel="stylesheet" type="text/css" href="res/css/bot-modify.css">
+	<link href="res/css/person.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="res/js/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="res/js/bootstrap/js/bootstrap.js"></script> 
+	<script type="text/javascript" src="res/js/jquery/jquery.form.js"></script>
+	<script type="text/javascript" src="res/js/jquery/jquery.validate.js"></script>
+	<script type="text/javascript" src="res/js/datetimepicker/datetimepicker.js"></script>
+	<script type="text/javascript" src="res/js/datetimepicker/datetimepicker.zh-CN.js"></script>	
+	<script type="text/javascript" src="res/js/webuploader/webuploader.js"></script>
+	<script type="text/javascript" src="res/js/webuploader/file.uploader.js"></script>	
+	<script type="text/javascript" src="res/js/layer/layer.js"></script>
+	<script type="text/javascript" src="res/js/system/dictbox.js"></script>		
+	<script type="text/javascript" src="res/js/cform/generic/generic_edit.js"></script>
+</head>
+<body>
+<div class="ibox-content">
+	<form class="form-horizontal m-t" >
+		<div style="display: none;">
+		formsId:<input type="text" id="formsId" name="formsId" value="${forms.formsId}" style="width: 50px;">
+		pkName:<input type="text" id="pkName" name="pkName" value="${pkName}" style="width: 50px;">
+		pkVal:<input type="text" id="${pkName}" name="${pkName}" value="${item[pkName]}" style="width: 50px;">
+		isflow:<input type="text" id="isflow" name="isflow" value="${isflow}" style="width: 50px;">
+		<c:forEach items="${hiddens}" var="comp" varStatus="vst">
+			${comp.cname}:<input type="text" id="${comp.cname}" name="${comp.cname}" value="${item[comp.cname]}" style="width: 50px;">
+		</c:forEach>
+		</div>
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="per-list">
+			<tr>
+			<c:set var="cnum" value="0" scope="request"></c:set>
+			<c:forEach items="${fields}" var="comp" varStatus="varst">
+	          	<td class="per-tt" width="10%">${comp.ctitle}<!--count=${varst.count}--cnum=${page.cmun}--></td>
+	          	<td class="per-cc" width="23%"
+	          		<c:if test="${not empty comp.colspan}">colspan="${comp.colspan}"
+	          			<c:set var="cnum" value="${cnum+1}" scope="request"></c:set>
+	          		</c:if>
+	          	>
+	           		<c:if test="${comp.compType == 'text'}">
+	             		<input type="text" id="${comp.cname}" name="${comp.cname}" value="${item[comp.cname]}" class="form-control" maxlength="${comp.clength}"
+	             			<c:if test="${comp.isMust=='1'}">required</c:if>>
+	            	</c:if>
+	             	<c:if test="${comp.compType == 'date' }">
+	             		<input type="text" id="${comp.cname}" name="${comp.cname}" readonly="readonly" class="dates form-control"
+	             			value="<fmt:formatDate value="${item[comp.cname]}" pattern="yyyy-MM-dd"/>" 
+	             			<c:if test="${comp.isMust=='1'}">required</c:if>>
+	             	</c:if>
+	           		<c:if test="${comp.compType == 'textarea'}">
+	             		<textarea id="${comp.cname}" name="${comp.cname}" rows="6" class="form-control" >${item[comp.cname]}</textarea>
+	             	</c:if>
+					<c:if test="${comp.compType == 'datadict'}">
+	             		<input type="hidden" id="${comp.cname}" name="${comp.cname}" dictId="${comp.compTypeValue}" value="${item[comp.cname]}" class="datadict">
+	             	</c:if>
+	             	<c:if test="${comp.compType == 'fileUpload'}">
+	            		<div class="wrap">
+			             	<div id="selBtn" attaType="${comp.cname}"><i class="fa fa-upload mar_R10"></i>上传附件</div >
+			         	</div>
+			          	<div id="fileList">
+			            	<c:forEach items="${atts}" var="att">
+			                	<div id="att_${att.attId}" attId="${att.attId}" class="attachment"> ${att.fileName} &nbsp;&nbsp; <i class="fa fa-close mar_L10"></i></div>
+			             	</c:forEach>
+			          	</div>
+	             	</c:if>	         	
+	          	</td>          
+				<c:if test="${(varst.count+cnum)%2 eq 0}">
+					<c:set var="cmun" value="${cmun + 2 }"></c:set>
+					</tr><tr>
+				</c:if>
+			</c:forEach>
+		</table>
+		<button id="formSubBtn" type="submit" style="display: none;"></button>
+	</form>
+	<c:if test="${empty isflow}">
+   	<div class="editool-bar">
+       	<button id="subBtn" class="btn btn-success" type="button">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;
+    	<button id="closeBtn" class="btn btn-default" type="button">关&nbsp;&nbsp;闭</button>
+	</div>	
+	</c:if>
+</div>
+
+</body>
+
+<body class="childrenBody" id="editForm" action="${module.moduleName}/${tableInfo.varName}/edit" method="post">
+	<br>
+	<form class="layui-form">
+#foreach($field in ${tableInfo.fieldInfos})
+    #if($field.keyName == 'PRI')
+    	hidden
+    #else
+		<div class="layui-form-item">
+			<label class="layui-form-label">文章标题</label>
+			<div class="layui-input-block">
+				<input type="text" class="layui-input newsName" lay-verify="required" placeholder="请输入文章标题">
+			</div>
+		</div>
+    #end
+#end
+
+		<div class="layui-form-item">
+			<div class="layui-inline">
+				<label class="layui-form-label">自定义属性</label>
+				<div class="layui-input-block">
+					<input type="checkbox" name="tuijian" class="tuijian" title="推荐">
+					<input type="checkbox" name="shenhe" class="newsStatus" title="审核">
+					<input type="checkbox" name="show" class="isShow" title="展示">
+				</div>
+			</div>
+			<div class="layui-inline">		
+				<label class="layui-form-label">文章作者</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input newsAuthor" lay-verify="required" placeholder="请输入文章作者">
+				</div>
+			</div>
+			<div class="layui-inline">		
+				<label class="layui-form-label">发布时间</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input newsTime" lay-verify="required|date" onclick="layui.laydate({elem:this})">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">浏览权限</label>
+				<div class="layui-input-inline">
+					<select name="browseLook" class="newsLook" lay-filter="browseLook">
+				        <option value="0">开放浏览</option>
+				        <option value="1">会员浏览</option>
+				    </select>
+				</div>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">关键字</label>
+			<div class="layui-input-block">
+				<input type="text" class="layui-input" placeholder="请输入文章关键字">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">内容摘要</label>
+			<div class="layui-input-block">
+				<textarea placeholder="请输入内容摘要" class="layui-textarea"></textarea>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">文章内容</label>
+			<div class="layui-input-block">
+				<textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="news_content"></textarea>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<div class="layui-input-block">
+				<button class="layui-btn" lay-submit="" lay-filter="addNews">立即提交</button>
+				<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+		    </div>
+		</div>
+	</form>
+	<script type="text/javascript" src="../../js/layui/layui.js"></script>
+	<script type="text/javascript" src="newsAdd.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/* 无效登录 */
+.error-con{
+	margin:0 auto;
+	margin-top:180px;
+}
+.err-fon1{
+	font-size:24px;
+	color:#333333;
+	line-height:60px;
+}
+.err-fon2{
+	font-size:16px;
+	color:#666666;
+}
+.err-fon2 a {
+	font-size:16px;
+	color:#666666;
+}
+.err-fon2 a:hover{
+	text-decoration:underline;
+}
+.err-fon3{
+	color:#ff5d00;
+}
+.err-fon4{
+	font-size:16px;
+	color:#666666;
+	line-height:25px;
+}
+.err-fon5{
+	font-size:14px;
+	color:#333333;
+	line-height:25px;
+}
+.err-fon6{
+	font-size:60px;
+	color:#00aeef;
+	line-height:60px;
+}
+.err-fon7{
+	font-size:30px;
+	color:#00aeef;
+	line-height:60px;
+}

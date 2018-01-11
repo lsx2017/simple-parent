@@ -1,0 +1,306 @@
+
+#xbox{
+
+	border-left:1px solid #ddd!important;
+	-moz-box-shadow:-3px 0 4px rgba(0,0,0,0.1)!important;	
+	-webkit-box-shadow:	-3px 0 4px rgb(0,0,0,0.1)!important;	
+	box-shadow:-3px 0 4px rgba(0,0,0,0.1)!important;	
+	display:none;
+	background-color: #FFFFFF;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	z-index:999999;	
+}
+
+.float-e-margins .btn {
+	margin-bottom:5px
+}
+.ui-sortable .ibox-title {
+	cursor:move
+}
+.ui-sortable-placeholder {
+	border:1px dashed #cecece!important;
+	visibility:visible!important;
+	background:#e7eaec
+}
+.ibox.ui-sortable-placeholder {
+	margin:0 0 23px!important
+}
+.ibox-content {
+	clear:both
+}
+.ibox-heading {
+	background-color:#f3f6fb;
+	border-bottom:none
+}
+.ibox-heading h3 {
+	font-weight:200;
+	font-size:24px
+}
+.ibox-title .label {
+	float:left;
+	margin-left:4px
+}
+.ibox-content h1, .ibox-content h2, .ibox-content h3, .ibox-content h4, .ibox-content h5, .ibox-title h1, .ibox-title h2, .ibox-title h3, .ibox-title h4, .ibox-title h5 {
+	margin-top:5px
+}
+.ibox-title h5 {
+	display:inline-block;
+	font-size:14px;
+	margin:0 0 7px;
+	padding:0;
+	text-overflow:ellipsis;
+	
+	float:left
+}
+.ui-draggable .ibox-title {
+	cursor:move
+}
+.ibox-title {
+	-moz-border-left-colors:none;
+	-moz-border-right-colors:none;
+	-moz-border-top-colors:none;
+	-webkit-border-image:none;
+	-o-border-image:none;
+	border-image:none;
+	background-color: #ffffff;
+	border-bottom:1px solid #e7eaec;
+	/**
+	background-color: #f3f3f3;
+	border-bottom:1px solid #bebebe;
+	*/
+	color:inherit;
+	margin-bottom:0;
+	padding:14px 15px 7px;
+	min-height:49px;
+	height:49px
+}
+.ibox-content {
+	background-color:#fff;
+	color:inherit;
+	padding:15px 20px 20px;
+	-webkit-border-image:none;
+	-o-border-image:none;
+	border-image:none;
+	border-style:solid solid none;
+	border:0;
+}
+.ibox-tools {
+	display:inline-block;
+	float:right;
+	margin-top:0;
+	position:relative;
+	padding:0
+}
+.ibox-tools a {
+	cursor:pointer;
+	margin-left:5px;
+	color:#c4c4c4
+}
+.ibox-tools a.btn-primary {
+	color:#fff
+}
+.ibox-tools .dropdown-menu>li>a {
+	padding:4px 10px;
+	font-size:12px
+}
+.ibox .open>.dropdown-menu {
+	left:auto;
+	right:0
+}
+.gray-bg {
+	background-color:#eeeeee !important;
+}
+.white-bg {
+	background-color:#fff
+}
+
+.editool-bar{
+	left: 0px !important; 
+	bottom:0 !important;
+	border-top:1px solid #e7eaec; 
+	width: 100%; 
+	height: 60px; 
+	line-height: 60px;
+	text-align: center;
+	display: block;
+	z-index: 999999;
+	position: fixed;
+	background-color: #fff !important;
+	background: #fff !important;
+	
+}
+
+
+/*bootstrap.css  自己修改的部分*/
+
+/*2317*/
+.table-bordered > thead > tr > th,
+.table-bordered > thead > tr > td {
+  border-bottom-width: 1px;
+  background-color:#f5f5f5;
+}
+
+.modify-md{
+	margin: 0px;
+	float: right;
+}
+
+
+.fa-close {
+	cursor: pointer;
+}
+
+.form-control{
+	background-color: #fff !important;
+}
+
+.error{
+	color:red;
+	margin-top: 5px;
+	display: block;
+	font-size: 12px;
+}
+
+
+/*新下拉框的css*/
+.drop-box{
+	cursor: pointer;
+}
+.layui-form-select .layui-input {
+    padding-right: 30px;
+    cursor: pointer;
+}
+.layui-input, .layui-textarea {
+    display: block;
+    width: 100%;
+    padding-left: 10px;
+    height: 38px;
+    line-height: 38px;
+    line-height: 36px\9;
+    border: 1px solid #e6e6e6;
+    background-color: #fff;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.layui-anim-upbit {
+    -webkit-animation-name: layui-upbit;
+    animation-name: layui-upbit;
+}
+
+.layui-form-select{
+    position: absolute;
+    left: 100;
+    top: 142px;
+    margin-bottom: 50px;
+    padding: 5px 0;
+    z-index: 999999;
+    width: 100%;
+    border: 1px solid #d2d2d2;
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.12);
+    box-sizing: border-box;
+}
+.layui-form-select li {
+	width:100%;
+    padding: 0 10px;
+    line-height: 36px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+.layui-form-select li.drop-on{
+	background-color:#1e90ff;
+	color:#ffffff;
+}
+.layui-form-select li:hover{
+	background-color:#f2f2f2;
+}
+.layui-edge {
+    position: absolute !important;
+    right: 10px !important;
+    top: 30% !important;
+    margin-top: -3px;
+    cursor: pointer;
+}
+.layui-edge i{
+	color:#c2c2c2;
+	cursor: pointer;
+}
+
+/** 多人选择器input */
+.member-int {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 4px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.member-int ul li a{
+	background-color:#f0f0f0;
+	border:1px solid #e1e1e1;
+	height:24px;
+	line-height:24px;
+	padding-left:10px;
+	padding-right:10px;
+	text-align:center;
+	float:left;
+	margin-right:10px;
+	color:#333333;
+	display:inline-block;
+}
+.member-int ul li a:hover{
+	background-color:#e0e0e0;
+	border:1px solid #e1e1e1;
+	text-decoration:none;
+}
+.member-int ul li a i:hover{
+	color:#ee0000;
+}
+
+#member-sel {
+	float: right;
+	cursor: pointer;
+}
+
+/******css 滚动条美化*******/
+::-webkit-scrollbar {  
+  width: 14px;  
+  height: 14px;  
+}  
+  
+::-webkit-scrollbar-track,  
+::-webkit-scrollbar-thumb {  
+  border-radius: 999px;  
+  border: 5px solid transparent;  
+}  
+  
+::-webkit-scrollbar-track {  
+  box-shadow: 1px 1px 5px rgba(0,0,0,.2) inset;  
+}  
+  
+::-webkit-scrollbar-thumb {  
+  min-height: 20px;  
+  background-clip: content-box;  
+  box-shadow: 0 0 0 5px rgba(0,0,0,.2) inset;  
+}  
+  
+::-webkit-scrollbar-corner {  
+  background: transparent;  
+}  

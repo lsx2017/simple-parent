@@ -1,0 +1,30 @@
+package ${module.servicePkgName};
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import com.simple.common.mybatis.BaseMapper;
+import com.simple.common.mybatis.BaseService;
+import ${module.entityPkgName}.${tableInfo.entityName};
+import ${module.daoPkgName}.${tableInfo.entityName}${module.daoSuffix};
+
+
+
+@Service
+@Transactional
+public class ${tableInfo.entityName}Service extends BaseService<${tableInfo.entityName}, Long> {
+	
+	@Autowired 
+	private ${tableInfo.entityName}${module.daoSuffix} ${tableInfo.varName}${module.daoSuffix};
+	
+	@Override
+	protected BaseMapper<${tableInfo.entityName}, Long> getBaseMapper() {
+		
+		return ${tableInfo.varName}${module.daoSuffix};
+	}
+	
+	
+		
+	
+
+}

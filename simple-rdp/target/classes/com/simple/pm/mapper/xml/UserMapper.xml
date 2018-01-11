@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.simple.pm.mapper.UserMapper">
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.simple.pm.entity.User">
+		<id column="USER_ID" property="userId" />
+		<result column="REAL_NAME" property="realName" />
+		<result column="USER_NAME" property="userName" />
+		<result column="USER_TYPE" property="userType" />
+		<result column="GENDER" property="gender" />
+		<result column="CREATE_DATE" property="createDate" />
+		<result column="STATUS" property="status" />
+		<result column="ADDRESS" property="address" />
+		<result column="BIRTHDAY" property="birthday" />
+		<result column="ID_CARD" property="idCard" />
+		<result column="locked" property="locked" />
+		<result column="body_height" property="bodyHeight" />
+		<result column="contacts" property="contacts" />
+		<result column="contacts_phone" property="contactsPhone" />
+		<result column="cur_addr" property="curAddr" />
+		<result column="EMAIL" property="email" />
+		<result column="entry_type" property="entryType" />
+		<result column="highest_degree" property="highestDegree" />
+		<result column="idcard" property="idcard" />
+		<result column="major_type" property="majorType" />
+		<result column="marital_status" property="maritalStatus" />
+		<result column="nation" property="nation" />
+		<result column="password" property="password" />
+		<result column="pfact" property="pfact" />
+		<result column="PHONE" property="phone" />
+		<result column="postcode" property="postcode" />
+		<result column="qq" property="qq" />
+		<result column="quit_date" property="quitDate" />
+		<result column="quit_reason" property="quitReason" />
+		<result column="register_addr" property="registerAddr" />
+		<result column="remarks" property="remarks" />
+		<result column="staff_status" property="staffStatus" />
+		<result column="telephone" property="telephone" />
+		<result column="university" property="university" />
+		<result column="weixin" property="weixin" />
+		<result column="user_no" property="userNo" />
+		<result column="REAL_NAME_FIRST" property="realNameFirst" />
+		<result column="OTHER_PID" property="otherPid" />
+		<result column="POSITION_ID" property="positionId" />
+		<result column="confirmation_date" property="confirmationDate" />
+		<result column="entry_date" property="entryDate" />
+		<result column="user_photo" property="userPhoto" />
+		<result column="FIRST_LETTER" property="firstLetter" />
+		<result column="CREATER" property="creater" />
+		<result column="EDIT_DATE" property="editDate" />
+		<result column="EDITOR" property="editor" />
+		<result column="salt" property="salt" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="baseColumnList">
+		<![CDATA[
+        USER_ID,REAL_NAME,USER_NAME,USER_TYPE,GENDER,CREATE_DATE,STATUS,ADDRESS,BIRTHDAY,ID_CARD,locked,body_height,contacts,contacts_phone,cur_addr,EMAIL,entry_type,highest_degree,idcard,major_type,marital_status,nation,password,pfact,PHONE,postcode,qq,quit_date,quit_reason,register_addr,remarks,staff_status,telephone,university,weixin,user_no,REAL_NAME_FIRST,OTHER_PID,POSITION_ID,confirmation_date,entry_date,user_photo,FIRST_LETTER,CREATER,EDIT_DATE,EDITOR,salt
+		]]>
+    </sql>
+
+	<!--查询全部数据-->
+	<select id="queryList" resultMap="BaseResultMap"  >
+        SELECT <include refid="baseColumnList" />
+			from s_user
+    </select>
+	
+	<!--根据主键查询一条数据-->
+	<select id="get" parameterType="Integer" resultMap="BaseResultMap" >
+        SELECT <include refid="baseColumnList" />
+			from s_user
+			where USER_ID=#{userId}
+    </select>
+	<!-- 添加数据,请核实表主键  -->
+	<insert id="create" parameterType="com.simple.pm.entity.User" >
+	    INSERT INTO s_user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userId!=null">
+				USER_ID,
+			</if>
+			<if test="realName!=null">
+				REAL_NAME,
+			</if>
+			<if test="userName!=null">
+				USER_NAME,
+			</if>
+			<if test="userType!=null">
+				USER_TYPE,
+			</if>
+			<if test="gender!=null">
+				GENDER,
+			</if>
+			<if test="createDate!=null">
+				CREATE_DATE,
+			</if>
+			<if test="status!=null">
+				STATUS,
+			</if>
+			<if test="address!=null">
+				ADDRESS,
+			</if>
+			<if test="birthday!=null">
+				BIRTHDAY,
+			</if>
+			<if test="idCard!=null">
+				ID_CARD,
+			</if>
+			<if test="locked!=null">
+				locked,
+			</if>
+			<if test="bodyHeight!=null">
+				body_height,
+			</if>
+			<if test="contacts!=null">
+				contacts,
+			</if>
+			<if test="contactsPhone!=null">
+				contacts_phone,
+			</if>
+			<if test="curAddr!=null">
+				cur_addr,
+			</if>
+			<if test="email!=null">
+				EMAIL,
+			</if>
+			<if test="entryType!=null">
+				entry_type,
+			</if>
+			<if test="highestDegree!=null">
+				highest_degree,
+			</if>
+			<if test="idcard!=null">
+				idcard,
+			</if>
+			<if test="majorType!=null">
+				major_type,
+			</if>
+			<if test="maritalStatus!=null">
+				marital_status,
+			</if>
+			<if test="nation!=null">
+				nation,
+			</if>
+			<if test="password!=null">
+				password,
+			</if>
+			<if test="pfact!=null">
+				pfact,
+			</if>
+			<if test="phone!=null">
+				PHONE,
+			</if>
+			<if test="postcode!=null">
+				postcode,
+			</if>
+			<if test="qq!=null">
+				qq,
+			</if>
+			<if test="quitDate!=null">
+				quit_date,
+			</if>
+			<if test="quitReason!=null">
+				quit_reason,
+			</if>
+			<if test="registerAddr!=null">
+				register_addr,
+			</if>
+			<if test="remarks!=null">
+				remarks,
+			</if>
+			<if test="staffStatus!=null">
+				staff_status,
+			</if>
+			<if test="telephone!=null">
+				telephone,
+			</if>
+			<if test="university!=null">
+				university,
+			</if>
+			<if test="weixin!=null">
+				weixin,
+			</if>
+			<if test="userNo!=null">
+				user_no,
+			</if>
+			<if test="realNameFirst!=null">
+				REAL_NAME_FIRST,
+			</if>
+			<if test="otherPid!=null">
+				OTHER_PID,
+			</if>
+			<if test="positionId!=null">
+				POSITION_ID,
+			</if>
+			<if test="confirmationDate!=null">
+				confirmation_date,
+			</if>
+			<if test="entryDate!=null">
+				entry_date,
+			</if>
+			<if test="userPhoto!=null">
+				user_photo,
+			</if>
+			<if test="firstLetter!=null">
+				FIRST_LETTER,
+			</if>
+			<if test="creater!=null">
+				CREATER,
+			</if>
+			<if test="editDate!=null">
+				EDIT_DATE,
+			</if>
+			<if test="editor!=null">
+				EDITOR,
+			</if>
+			<if test="salt!=null">
+				salt,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userId!=null">
+				 #{userId},
+			</if>
+			<if test="realName!=null">
+				 #{realName},
+			</if>
+			<if test="userName!=null">
+				 #{userName},
+			</if>
+			<if test="userType!=null">
+				 #{userType},
+			</if>
+			<if test="gender!=null">
+				 #{gender},
+			</if>
+			<if test="createDate!=null">
+				 #{createDate},
+			</if>
+			<if test="status!=null">
+				 #{status},
+			</if>
+			<if test="address!=null">
+				 #{address},
+			</if>
+			<if test="birthday!=null">
+				 #{birthday},
+			</if>
+			<if test="idCard!=null">
+				 #{idCard},
+			</if>
+			<if test="locked!=null">
+				 #{locked},
+			</if>
+			<if test="bodyHeight!=null">
+				 #{bodyHeight},
+			</if>
+			<if test="contacts!=null">
+				 #{contacts},
+			</if>
+			<if test="contactsPhone!=null">
+				 #{contactsPhone},
+			</if>
+			<if test="curAddr!=null">
+				 #{curAddr},
+			</if>
+			<if test="email!=null">
+				 #{email},
+			</if>
+			<if test="entryType!=null">
+				 #{entryType},
+			</if>
+			<if test="highestDegree!=null">
+				 #{highestDegree},
+			</if>
+			<if test="idcard!=null">
+				 #{idcard},
+			</if>
+			<if test="majorType!=null">
+				 #{majorType},
+			</if>
+			<if test="maritalStatus!=null">
+				 #{maritalStatus},
+			</if>
+			<if test="nation!=null">
+				 #{nation},
+			</if>
+			<if test="password!=null">
+				 #{password},
+			</if>
+			<if test="pfact!=null">
+				 #{pfact},
+			</if>
+			<if test="phone!=null">
+				 #{phone},
+			</if>
+			<if test="postcode!=null">
+				 #{postcode},
+			</if>
+			<if test="qq!=null">
+				 #{qq},
+			</if>
+			<if test="quitDate!=null">
+				 #{quitDate},
+			</if>
+			<if test="quitReason!=null">
+				 #{quitReason},
+			</if>
+			<if test="registerAddr!=null">
+				 #{registerAddr},
+			</if>
+			<if test="remarks!=null">
+				 #{remarks},
+			</if>
+			<if test="staffStatus!=null">
+				 #{staffStatus},
+			</if>
+			<if test="telephone!=null">
+				 #{telephone},
+			</if>
+			<if test="university!=null">
+				 #{university},
+			</if>
+			<if test="weixin!=null">
+				 #{weixin},
+			</if>
+			<if test="userNo!=null">
+				 #{userNo},
+			</if>
+			<if test="realNameFirst!=null">
+				 #{realNameFirst},
+			</if>
+			<if test="otherPid!=null">
+				 #{otherPid},
+			</if>
+			<if test="positionId!=null">
+				 #{positionId},
+			</if>
+			<if test="confirmationDate!=null">
+				 #{confirmationDate},
+			</if>
+			<if test="entryDate!=null">
+				 #{entryDate},
+			</if>
+			<if test="userPhoto!=null">
+				 #{userPhoto},
+			</if>
+			<if test="firstLetter!=null">
+				 #{firstLetter},
+			</if>
+			<if test="creater!=null">
+				 #{creater},
+			</if>
+			<if test="editDate!=null">
+				 #{editDate},
+			</if>
+			<if test="editor!=null">
+				 #{editor},
+			</if>
+			<if test="salt!=null">
+				 #{salt},
+			</if>
+		</trim>   
+	</insert>
+	<!--修改数据-->
+	<update id="update" parameterType="com.simple.pm.entity.User">
+        UPDATE s_user 
+        <set>
+		<if test="realName!=null">
+			REAL_NAME = #{realName} ,
+		</if>  		
+		<if test="userName!=null">
+			USER_NAME = #{userName} ,
+		</if>  		
+		<if test="userType!=null">
+			USER_TYPE = #{userType} ,
+		</if>  		
+		<if test="gender!=null">
+			GENDER = #{gender} ,
+		</if>  		
+		<if test="createDate!=null">
+			CREATE_DATE = #{createDate} ,
+		</if>  		
+		<if test="status!=null">
+			STATUS = #{status} ,
+		</if>  		
+		<if test="address!=null">
+			ADDRESS = #{address} ,
+		</if>  		
+		<if test="birthday!=null">
+			BIRTHDAY = #{birthday} ,
+		</if>  		
+		<if test="idCard!=null">
+			ID_CARD = #{idCard} ,
+		</if>  		
+		<if test="locked!=null">
+			locked = #{locked} ,
+		</if>  		
+		<if test="bodyHeight!=null">
+			body_height = #{bodyHeight} ,
+		</if>  		
+		<if test="contacts!=null">
+			contacts = #{contacts} ,
+		</if>  		
+		<if test="contactsPhone!=null">
+			contacts_phone = #{contactsPhone} ,
+		</if>  		
+		<if test="curAddr!=null">
+			cur_addr = #{curAddr} ,
+		</if>  		
+		<if test="email!=null">
+			EMAIL = #{email} ,
+		</if>  		
+		<if test="entryType!=null">
+			entry_type = #{entryType} ,
+		</if>  		
+		<if test="highestDegree!=null">
+			highest_degree = #{highestDegree} ,
+		</if>  		
+		<if test="idcard!=null">
+			idcard = #{idcard} ,
+		</if>  		
+		<if test="majorType!=null">
+			major_type = #{majorType} ,
+		</if>  		
+		<if test="maritalStatus!=null">
+			marital_status = #{maritalStatus} ,
+		</if>  		
+		<if test="nation!=null">
+			nation = #{nation} ,
+		</if>  		
+		<if test="password!=null">
+			password = #{password} ,
+		</if>  		
+		<if test="pfact!=null">
+			pfact = #{pfact} ,
+		</if>  		
+		<if test="phone!=null">
+			PHONE = #{phone} ,
+		</if>  		
+		<if test="postcode!=null">
+			postcode = #{postcode} ,
+		</if>  		
+		<if test="qq!=null">
+			qq = #{qq} ,
+		</if>  		
+		<if test="quitDate!=null">
+			quit_date = #{quitDate} ,
+		</if>  		
+		<if test="quitReason!=null">
+			quit_reason = #{quitReason} ,
+		</if>  		
+		<if test="registerAddr!=null">
+			register_addr = #{registerAddr} ,
+		</if>  		
+		<if test="remarks!=null">
+			remarks = #{remarks} ,
+		</if>  		
+		<if test="staffStatus!=null">
+			staff_status = #{staffStatus} ,
+		</if>  		
+		<if test="telephone!=null">
+			telephone = #{telephone} ,
+		</if>  		
+		<if test="university!=null">
+			university = #{university} ,
+		</if>  		
+		<if test="weixin!=null">
+			weixin = #{weixin} ,
+		</if>  		
+		<if test="userNo!=null">
+			user_no = #{userNo} ,
+		</if>  		
+		<if test="realNameFirst!=null">
+			REAL_NAME_FIRST = #{realNameFirst} ,
+		</if>  		
+		<if test="otherPid!=null">
+			OTHER_PID = #{otherPid} ,
+		</if>  		
+		<if test="positionId!=null">
+			POSITION_ID = #{positionId} ,
+		</if>  		
+		<if test="confirmationDate!=null">
+			confirmation_date = #{confirmationDate} ,
+		</if>  		
+		<if test="entryDate!=null">
+			entry_date = #{entryDate} ,
+		</if>  		
+		<if test="userPhoto!=null">
+			user_photo = #{userPhoto} ,
+		</if>  		
+		<if test="firstLetter!=null">
+			FIRST_LETTER = #{firstLetter} ,
+		</if>  		
+		<if test="creater!=null">
+			CREATER = #{creater} ,
+		</if>  		
+		<if test="editDate!=null">
+			EDIT_DATE = #{editDate} ,
+		</if>  		
+		<if test="editor!=null">
+			EDITOR = #{editor} ,
+		</if>  		
+		<if test="salt!=null">
+			salt = #{salt} ,
+		</if>  		
+		    </set>
+        <where> 
+			USER_ID=#{userId}
+	    </where>        
+	</update>
+	<!--根据参数删除数据
+  	<delete id="delete" parameterType="com.simple.pm.entity.User" >
+    	DELETE FROM s_user
+    	<where> 
+	 
+     	</where> 
+  	</delete>
+	-->
+	<!--根据主键删除数据-->
+	<delete id="deleteById" parameterType="Integer">
+        DELETE FROM s_user
+        where USER_ID=#{userId}
+    </delete>  
+</mapper>

@@ -1,0 +1,61 @@
+@charset "utf-8";
+/* CSS Document */
+
+.lo-main{
+	background-color:#1d8bd8;
+}
+.login-bg{
+	background:url(../images/oa-login-bg.png) no-repeat center top;
+}
+.login-c{
+	width:700px;
+	margin:0 auto;
+}
+
+.login-info{
+	width:550px; 
+	margin:0 auto;
+	
+
+}
+
+
+
+.login-list td{
+}
+.info-user{
+	background-color:#ffffff;
+	width:204px;
+}
+.login-int {
+    border: 0;
+    padding: 0;
+    margin-left: 10px;
+    background: white;
+    width: 158px;
+    height: 36px;
+    line-height: 36px;
+    outline: none;
+}
+.login-btn{
+	width: 120px;
+    height: 36px;
+	line-height:36px;
+    background-color: #66d354;
+	color:#ffffff;
+	font-size:18px;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+	display:block;
+}
+
+.login-b{
+	width:100%;
+	text-align:center;
+	color:#ffffff;
+	height:52px;
+	line-height:52px;
+	background-color:#0f64a5;
+
+}

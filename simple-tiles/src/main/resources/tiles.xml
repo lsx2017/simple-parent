@@ -1,0 +1,29 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->    
+<!DOCTYPE tiles-definitions PUBLIC    
+    "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"    
+    "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">    
+      
+<tiles-definitions>  
+  
+    <!-- ↓↓↓====================layout==================↓↓↓ -->  
+    <!-- base -->  
+    <definition name="baseLayout" template="/WEB-INF/jsp/layouts/layout.jsp">  
+        <put-attribute name="header" value="/WEB-INF/jsp/layouts/header.jsp" />  
+        <put-attribute name="sidemenu" value=""/>  
+        <put-attribute name="body" value="" />    
+        <put-attribute name="footer" value="/WEB-INF/jsp/layouts/footer.jsp" />  
+    </definition>  
+      
+    <!-- minyan_sidemenu -->  
+    <definition name="home_sidemenu" extends="baseLayout">  
+        <put-attribute name="sidemenu" value="/WEB-INF/jsp/layouts/minyan_sidemenu.jsp" />  
+    </definition>  
+  
+    <!-- 主页 -->  
+    <definition name="home" extends="home_sidemenu">  
+        <put-attribute name="body" value="/WEB-INF/jsp/admin/common/home.jsp" />  
+    </definition>  
+  
+      
+    <!-- ↑↑↑===================MinYan===================↑↑↑ -->  
+</tiles-definitions>  

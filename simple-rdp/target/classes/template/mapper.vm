@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="${module.daoPkgName}.${tableInfo.entityName}Mapper">
+#if(${enableCache})
+	<!-- 开启二级缓存 -->
+	<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
+#end
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="${module.entityPkgName}.${tableInfo.entityName}">
+#foreach($field in ${tableInfo.fieldInfos})
+#if($field.keyName == 'PRI')
+		<id column="${field.columnName}" property="${field.fieldName}" />
+#else
+		<result column="${field.columnName}" property="${field.fieldName}" />
+#end
+#end
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="baseColumnList">
+		<![CDATA[
+        ${tableInfo.columnNames}
+		]]>
+    </sql>
+
+	<!--查询全部数据-->
+	<select id="queryList" resultMap="BaseResultMap"  >
+        SELECT <include refid="baseColumnList" />
+			from ${tableInfo.tableName}
+    </select>
+	
+	<!--根据主键查询一条数据-->
+	<select id="get" parameterType="${tableInfo.pkFieldInfo.fieldType}" resultMap="BaseResultMap" >
+        SELECT <include refid="baseColumnList" />
+			from ${tableInfo.tableName}
+			where ${tableInfo.pkFieldInfo.columnName}=#{${tableInfo.pkFieldInfo.fieldName}}
+    </select>
+	<!-- 添加数据,请核实表主键  -->
+	<insert id="create" parameterType="${module.entityPkgName}.${tableInfo.entityName}" >
+	    INSERT INTO ${tableInfo.tableName}
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+	#foreach($field in ${tableInfo.fieldInfos})
+		<if test="${field.fieldName}!=null">
+				${field.columnName},
+			</if>
+	#end			
+	</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+	#foreach($field in ${tableInfo.fieldInfos})
+		<if test="${field.fieldName}!=null">
+				 #{${field.fieldName}},
+			</if>
+	#end				
+	</trim>   
+	</insert>
+	<!--修改数据-->
+	<update id="update" parameterType="${module.entityPkgName}.${tableInfo.entityName}">
+        UPDATE ${tableInfo.tableName} 
+        <set>
+#foreach($field in ${tableInfo.fieldInfos})
+	#if($field.keyName != 'PRI')
+<if test="${field.fieldName}!=null">
+			${field.columnName} = #{${field.fieldName}} ,
+		</if>  		
+	#end
+#end
+	    </set>
+        <where> 
+			${tableInfo.pkFieldInfo.columnName}=#{${tableInfo.pkFieldInfo.fieldName}}
+	    </where>        
+	</update>
+	<!--根据参数删除数据
+  	<delete id="delete" parameterType="${module.entityPkgName}.${tableInfo.entityName}" >
+    	DELETE FROM ${tableInfo.tableName}
+    	<where> 
+	 
+     	</where> 
+  	</delete>
+	-->
+	<!--根据主键删除数据-->
+	<delete id="deleteById" parameterType="${tableInfo.pkFieldInfo.fieldType}">
+        DELETE FROM ${tableInfo.tableName}
+        where ${tableInfo.pkFieldInfo.columnName}=#{${tableInfo.pkFieldInfo.fieldName}}
+    </delete>  
+</mapper>

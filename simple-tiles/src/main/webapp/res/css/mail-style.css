@@ -1,0 +1,61 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+.mail-left{
+	border:1px solid #cccccc;
+	background-color:#ffffff;
+}
+.mail-h{
+	height:40px;
+	line-height:40px;
+	background-color:#e5f0f9;
+	color:#666666;
+	font-size:16px;
+	padding-left:10px;
+}
+.mail-right{
+
+	border:1px solid #cccccc;
+	background-color:#ffffff;
+	
+}
+
+.mail-nav ul li{
+	float:left;
+}
+.folder-list ul li a{
+	width:198px;
+	height:34px;
+	line-height:34px;
+	color:#383837;
+	display:block;
+}
+.folder-list ul li a:hover{
+	background-color:#fdedab;
+}
+.folder-list ul li a i{
+	margin-left:15px;
+	margin-right:20px;
+	color:#383837;
+}
+.mail-bar{
+	border-bottom:1px solid #d8dee5;
+	width:180px;
+	height:5px;
+	margin-bottom:5px;
+	margin:0 auto;
+	text-align:center;
+}
+.cir {
+    width: 18px;
+    height: 16px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.cir.Ru {
+    background:url(../images/mail2757b6.png) -48px 0 no-repeat;
+}
+.cir.Rr {
+    background: url(../images/mail2757b6.png) -48px -16px no-repeat;
+}

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.simple.platform.mapper.DataDictMapper">
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.simple.platform.entity.DataDict">
+		<id column="DICT_ID" property="dictId" />
+		<result column="PARENT_ID" property="parentId" />
+		<result column="DICT_NAME" property="dictName" />
+		<result column="DICT_CODE" property="dictCode" />
+		<result column="DICT_TYPE" property="dictType" />
+		<result column="CREATE_DATE" property="createDate" />
+		<result column="STATUS" property="status" />
+		<result column="REMARKS" property="remarks" />
+		<result column="SEQ" property="seq" />
+		<result column="CREATER" property="creater" />
+		<result column="EDIT_DATE" property="editDate" />
+		<result column="EDITOR" property="editor" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="baseColumnList">
+		<![CDATA[
+        DICT_ID,PARENT_ID,DICT_NAME,DICT_CODE,DICT_TYPE,CREATE_DATE,STATUS,REMARKS,SEQ,CREATER,EDIT_DATE,EDITOR
+		]]>
+    </sql>
+
+	<!--查询全部数据-->
+	<select id="queryPageList" parameterType="java.util.Map" resultMap="BaseResultMap" >
+        SELECT <include refid="baseColumnList" /> from s_data_dict t where t.DICT_TYPE=#{dictType}
+    </select>
+	
+	<!--根据主键查询一条数据-->
+	<select id="get" parameterType="java.lang.Long" resultMap="BaseResultMap" >
+        SELECT <include refid="baseColumnList" />
+			from s_data_dict
+			where DICT_ID=#{dictId}
+    </select>
+	<!--统计表记录-->
+    <select id="count" resultType="java.lang.Long">
+        select count(*) from s_data_dict
+    	 <where>
+		  		<if test="offerInstId!=null">
+		  			AND OFFER_INST_ID = #{offerInstId}
+		  		</if>
+		  		<if test="offerId!=null">
+		  			AND OFFER_ID = #{offerId}
+		  		</if>
+		  		<if test="offerType!=null">
+		  			AND OFFER_TYPE = #{offerType}
+		  		</if>
+		  		<if test="ownerCustId!=null">
+		  			AND OWNER_CUST_ID = #{ownerCustId}
+		  		</if>
+		  		<if test="effDate!=null">
+		  			AND EFF_DATE = #{effDate}
+		  		</if>
+		  		<if test="expDate!=null">
+		  			AND EXP_DATE = #{expDate}
+		  		</if>
+		  		<if test="offerAgreeId!=null">
+		  			AND OFFER_AGREE_ID = #{offerAgreeId}
+		  		</if>
+		  		<if test="createOrgId!=null">
+		  			AND CREATE_ORG_ID = #{createOrgId}
+		  		</if>
+		  		<if test="expProcMethod!=null">
+		  			AND EXP_PROC_METHOD = #{expProcMethod}
+		  		</if>
+		  		<if test="lanId!=null">
+		  			AND LAN_ID = #{lanId}
+		  		</if>
+		  		<if test="regionId!=null">
+		  			AND REGION_ID = #{regionId}
+		  		</if>
+		  		<if test="statusCd!=null">
+		  			AND STATUS_CD = #{statusCd}
+		  		</if>
+		  		<if test="createStaff!=null">
+		  			AND CREATE_STAFF = #{createStaff}
+		  		</if>
+		  		<if test="updateStaff!=null">
+		  			AND UPDATE_STAFF = #{updateStaff}
+		  		</if>
+		  		<if test="createDate!=null">
+		  			AND CREATE_DATE = #{createDate}
+		  		</if>
+		  		<if test="statusDate!=null">
+		  			AND STATUS_DATE = #{statusDate}
+		  		</if>
+		  		<if test="updateDate!=null">
+		  			AND UPDATE_DATE = #{updateDate}
+		  		</if>
+		  		<if test="busiModDate!=null">
+		  			AND BUSI_MOD_DATE = #{busiModDate}
+		  		</if>
+		  		<if test="lastOrderItemId!=null">
+		  			AND LAST_ORDER_ITEM_ID = #{lastOrderItemId}
+		  		</if>
+		  		<if test="remark!=null">
+		  			AND REMARK = #{remark}
+		  		</if>
+		  		<if test="extOfferInstId!=null">
+		  			AND EXT_OFFER_INST_ID = #{extOfferInstId}
+		  		</if>
+		  		<if test="isIndependent!=null">
+		  			AND IS_INDEPENDENT = #{isIndependent}
+		  		</if>
+		  		<if test="outerOfferInstId!=null">
+		  			AND OUTER_OFFER_INST_ID = #{outerOfferInstId}
+		  		</if>
+		 </where> 
+    </select>
+	<!-- 添加数据,请核实表主键  -->
+	<insert id="create" parameterType="com.simple.platform.entity.DataDict" >
+	    INSERT INTO s_data_dict
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="dictId!=null">
+				DICT_ID,
+			</if>
+			<if test="parentId!=null">
+				PARENT_ID,
+			</if>
+			<if test="dictName!=null">
+				DICT_NAME,
+			</if>
+			<if test="dictCode!=null">
+				DICT_CODE,
+			</if>
+			<if test="dictType!=null">
+				DICT_TYPE,
+			</if>
+			<if test="createDate!=null">
+				CREATE_DATE,
+			</if>
+			<if test="status!=null">
+				STATUS,
+			</if>
+			<if test="remarks!=null">
+				REMARKS,
+			</if>
+			<if test="seq!=null">
+				SEQ,
+			</if>
+			<if test="creater!=null">
+				CREATER,
+			</if>
+			<if test="editDate!=null">
+				EDIT_DATE,
+			</if>
+			<if test="editor!=null">
+				EDITOR,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="dictId!=null">
+				 #{dictId},
+			</if>
+			<if test="parentId!=null">
+				 #{parentId},
+			</if>
+			<if test="dictName!=null">
+				 #{dictName},
+			</if>
+			<if test="dictCode!=null">
+				 #{dictCode},
+			</if>
+			<if test="dictType!=null">
+				 #{dictType},
+			</if>
+			<if test="createDate!=null">
+				 #{createDate},
+			</if>
+			<if test="status!=null">
+				 #{status},
+			</if>
+			<if test="remarks!=null">
+				 #{remarks},
+			</if>
+			<if test="seq!=null">
+				 #{seq},
+			</if>
+			<if test="creater!=null">
+				 #{creater},
+			</if>
+			<if test="editDate!=null">
+				 #{editDate},
+			</if>
+			<if test="editor!=null">
+				 #{editor},
+			</if>
+		</trim>   
+	</insert>
+	<!--修改数据-->
+	<update id="update" parameterType="com.simple.platform.entity.DataDict">
+        UPDATE s_data_dict 
+        <set>
+		<if test="parentId!=null">
+			PARENT_ID = #{parentId} ,
+		</if>  		
+		<if test="dictName!=null">
+			DICT_NAME = #{dictName} ,
+		</if>  		
+		<if test="dictCode!=null">
+			DICT_CODE = #{dictCode} ,
+		</if>  		
+		<if test="dictType!=null">
+			DICT_TYPE = #{dictType} ,
+		</if>  		
+		<if test="createDate!=null">
+			CREATE_DATE = #{createDate} ,
+		</if>  		
+		<if test="status!=null">
+			STATUS = #{status} ,
+		</if>  		
+		<if test="remarks!=null">
+			REMARKS = #{remarks} ,
+		</if>  		
+		<if test="seq!=null">
+			SEQ = #{seq} ,
+		</if>  		
+		<if test="creater!=null">
+			CREATER = #{creater} ,
+		</if>  		
+		<if test="editDate!=null">
+			EDIT_DATE = #{editDate} ,
+		</if>  		
+		<if test="editor!=null">
+			EDITOR = #{editor} ,
+		</if>  		
+		    </set>
+        <where> 
+			DICT_ID=#{dictId}  
+	    </where>        
+	</update>
+	<!--根据参数删除数据-->
+  	<delete id="delete" parameterType="com.simple.platform.entity.DataDict" >
+    	DELETE FROM s_data_dict
+    	<where> 
+	     	<if test="dictId!=null">
+	       		AND DICT_ID = #{dictId}
+	       	</if>
+     	</where> 
+  	</delete>
+	<!--根据主键删除数据-->
+	<delete id="deleteById" parameterType="java.lang.Long">
+        DELETE FROM s_data_dict
+        where DICT_ID=#{dictId}
+    </delete>  
+</mapper>

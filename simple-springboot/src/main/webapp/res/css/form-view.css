@@ -1,0 +1,20 @@
+@charset "utf-8";
+/*common*/
+
+.form-view .column-layout {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+.form-view .column-layout .cell {
+    display: table-cell;
+    vertical-align: top;
+    height: 51px;
+    border-left: 1px solid #7FCDFD;
+}
+.form-view .column-layout .cell:first-child {
+    border-left: none !important;
+}
+.form-view .two-columns .cell, .form-view .two-columns .cell .dropdown-menu {
+    width: 50%;
+}

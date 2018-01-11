@@ -1,0 +1,31 @@
+1、职位显示现有编制点击显示现任职员（姓名逗号隔开）
+
+delete from s_role_resource where res_id=2001;
+delete from s_resource where res_id=2001;
+
+
+delete from wf_node_actor;
+delete from wf_node_operate;
+delete from wf_node;
+
+
+SELECT t.`WF_VERSION_ID` FROM `wf_workflow_version` t WHERE t.`WORKFLOW_ID` =6
+
+SELECT * FROM  wf_node t WHERE t.`WF_VERSION_ID`  IN  (
+	SELECT t1.`WF_VERSION_ID` FROM `wf_workflow_version` t1 WHERE t1.`WORKFLOW_ID` =6)
+
+SELECT * FROM  `wf_node_actor` t5 WHERE t5.`NODE_ID` IN  (
+	SELECT t.node_id FROM  wf_node t WHERE t.`WF_VERSION_ID`  IN  (
+	SELECT t1.`WF_VERSION_ID` FROM `wf_workflow_version` t1 WHERE t1.`WORKFLOW_ID` =6)
+)
+
+SELECT * FROM  `wf_node_actor` t5 WHERE t5.`NODE_ID` IN  (
+	SELECT t.node_id FROM  wf_node t WHERE t.`WF_VERSION_ID`  IN  (
+	SELECT t1.`WF_VERSION_ID` FROM `wf_workflow_version` t1 WHERE t1.`WORKFLOW_ID` =6)
+)
+
+SELECT * FROM  `wf_node_operate` t5 WHERE t5.`NODE_ID` IN  (
+	SELECT t.node_id FROM  wf_node t WHERE t.`WF_VERSION_ID`  IN  (
+	SELECT t1.`WF_VERSION_ID` FROM `wf_workflow_version` t1 WHERE t1.`WORKFLOW_ID` =6)
+)
+

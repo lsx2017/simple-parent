@@ -1,0 +1,84 @@
+package ${module.controllerPkgName};
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.simple.common.controller.BaseController;
+import com.simple.common.entity.Page;
+import com.simple.common.utils.Result;
+import ${module.entityPkgName}.${tableInfo.entityName};
+import ${module.servicePkgName}.${tableInfo.entityName}Service;
+
+
+
+#set ($serviceName=${tableInfo.varName}+"Service")
+
+/**
+ * 
+ * @author ${tableInfo.author}
+ * @date ${tableInfo.createDate}
+ */
+@Controller
+@RequestMapping("${module.moduleName}/${tableInfo.varName}")
+public class ${tableInfo.entityName}Controller extends BaseController<${tableInfo.entityName}, ${tableInfo.pkFieldInfo.fieldType}> {
+
+    @Autowired
+    private ${tableInfo.entityName}Service ${serviceName};
+    
+	@RequestMapping("list")
+	public String list(Page<${tableInfo.entityName}> page, Map<String, Object> params, ModelMap model) {
+		
+		${serviceName}.queryList(params, page);
+		model.put("page", page);
+		
+		return "/${module.moduleName}/${tableInfo.varName}/${tableInfo.varName}_list";	
+	}
+
+
+    @RequestMapping("edit")
+    public String edit(${tableInfo.entityName} ${tableInfo.varName}, ModelMap model) {
+
+        if (${tableInfo.varName}.${tableInfo.pkFieldInfo.getMethodName}() != null) {
+            ${tableInfo.varName} = ${serviceName}.get(${tableInfo.varName}.${tableInfo.pkFieldInfo.getMethodName}());
+        } 
+
+        model.put("bean", ${tableInfo.varName});
+
+        return "${module.moduleName}/${tableInfo.varName}/${tableInfo.varName}_edit";
+    }
+
+
+    @ResponseBody
+    @RequestMapping("save")
+    public Result save(${tableInfo.entityName} ${tableInfo.varName}) {
+          
+		${serviceName}.create(${tableInfo.varName});
+		return Result.SUCCESS;
+    }
+    
+	
+	@ResponseBody
+	@RequestMapping("remove")
+	public Result remove(${tableInfo.pkFieldInfo.fieldType} ${tableInfo.pkFieldInfo.fieldName}) {
+
+		try {
+			${serviceName}.deleteById(${tableInfo.pkFieldInfo.fieldName});
+			return Result.SUCCESS;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return Result.FAILURE;
+		}
+
+	}
+    
+    
+}

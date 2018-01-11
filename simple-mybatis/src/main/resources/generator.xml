@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<generator>
+	<!-- mysql -->
+	<jdbcConnection 
+		driverName="com.mysql.jdbc.Driver" 
+		url="jdbc:mysql://192.168.140.100:3306/platform?useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=convertToNull" 
+		username="root" 
+		password="root123"> 
+	</jdbcConnection>
+	
+	 <!-- oracle 	
+	<jdbcConnection 
+		driverName="oracle.jdbc.driver.OracleDriver" 
+		url="jdbc:oracle:thin:@133.37.135.33:1521:test3" 
+		username="CRM_APP" 
+		password="CRM_APP"> 
+	</jdbcConnection>
+-->
+	<const targetPath="D:\Workspaces\base\simple-parent\simple-generator\src\main\java"></const>
+	<module name="system">
+		<entity targetPackage="com.simple.platform.entity">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</entity>
+		<mapping targetPackage="com.simple.platform.mapper.xml">
+			<property name="enableSubPackages" value="true" />
+		</mapping>
+		<dao targetPackage="com.simple.platform.mapper">
+			<property name="enableSubPackages" value="true" />
+		</dao>
+		<service targetPackage="com.simple.platform.service">
+			<property name="enableSubPackages" value="true" />
+		</service>
+		
+		<controller targetPackage="com.simple.platform.controller">
+			<property name="enableSubPackages" value="true" />
+		</controller>	
+		<!-- 要生成那些表(更改tableName和domainObjectName就可以) -->
+		
+		<table tableName="s_data_dict" entityName="DataDict" author="liushx"/>		
+		<!-- <table tableName="post_man" entityName="PostMan" author="liushx"/>	 -->
+	</module>
+</generator>
