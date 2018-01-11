@@ -21,7 +21,6 @@ public abstract class BaseController<T, PK extends Serializable> {
 	
 //	protected Logger logger = Logger.getLogger(getClass());
 	
-	
 	protected Class<T> entityClass;
 
 	protected static final String modelAttributeName = "_model_attribute_";
@@ -59,7 +58,6 @@ public abstract class BaseController<T, PK extends Serializable> {
 		
 		return getViewName("view");
 	}
-	
 	
 //	
 //	protected void list(HttpServletRequest request,  ModelMap model) {
